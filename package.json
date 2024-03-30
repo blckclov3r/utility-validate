@@ -1,18 +1,16 @@
 {
-  "name": "utilities",
+  "name": "utility-validate",
   "version": "1.0.0",
   "description": "This package does not offer any useful code or functionality at the moment. Please refrain from installing it for now.",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
-  "homepage": "https://github.com/blckclov3r/utilities#readme",
+  "homepage": "https://github.com/blckclov3r/utility-validate#readme",
   "keywords": [
     "utilities",
     "validation",
     "utility",
     "library",
-    "sanitization",
-    "assertion",
     "validity",
     "hooks",
     "functions",
@@ -23,10 +21,10 @@
   "author": "blckclov3r",
   "license": "MIT",
   "repository": {
-    "url": "git+https://github.com/blckclov3r/utilities.git"
+    "url": "git+https://github.com/blckclov3r/utility-validate.git"
   },
   "bugs": {
-    "url": "https://github.com/blckclov3r/utilities/issues",
+    "url": "https://github.com/blckclov3r/utility-validate/issues",
     "email": "blckclov3r@gmail.com"
   },
   "devDependencies": {
