@@ -1,0 +1,41 @@
+{
+  "name": "utilities",
+  "version": "1.0.0",
+  "description": "This package does not offer any useful code or functionality at the moment. Please refrain from installing it for now.",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "homepage": "https://github.com/blckclov3r/utilities#readme",
+  "keywords": [
+    "utilities",
+    "validation",
+    "utility",
+    "library",
+    "sanitization",
+    "assertion",
+    "validity",
+    "hooks",
+    "functions",
+    "verification",
+    "helpers",
+    "tools"
+  ],
+  "author": "blckclov3r",
+  "license": "MIT",
+  "repository": {
+    "url": "git+https://github.com/blckclov3r/utilities.git"
+  },
+  "bugs": {
+    "url": "https://github.com/blckclov3r/utilities/issues",
+    "email": "blckclov3r@gmail.com"
+  },
+  "devDependencies": {
+    "@swc/core": "^1.4.11",
+    "terser": "^5.29.2",
+    "tsup": "^8.0.2",
+    "typescript": "^5.4.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

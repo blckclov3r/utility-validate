@@ -1,0 +1,6 @@
+.idea
+.env
+dist
+node_modules
+.yarnrc.yml
+.yarn
