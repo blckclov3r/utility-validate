@@ -1,7 +1,7 @@
 {
   "name": "utility-validate",
-  "version": "1.0.0",
-  "description": "This package does not offer any useful code or functionality at the moment. Please refrain from installing it for now.",
+  "version": "1.0.1",
+  "description": "This package currently lacks useful code or functionality. Please avoid installing it for now.",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -29,6 +29,7 @@
   },
   "devDependencies": {
     "@swc/core": "^1.4.11",
+    "@types/node": "^20.12.5",
     "terser": "^5.29.2",
     "tsup": "^8.0.2",
     "typescript": "^5.4.3"
