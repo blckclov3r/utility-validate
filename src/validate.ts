@@ -1,4 +1,4 @@
-interface IsAlphaOptions {
+type AlphaOption = {
     ignore?: RegExp | string;
 }
 
@@ -382,7 +382,7 @@ const validate = () => {
     const numericRegex = /^[0-9]+$/;
 
     // Check if a string contains only characters allowed by a specified regex pattern
-    const isOnlyChars = (str: string, regex: RegExp, options: IsAlphaOptions = {}): boolean => {
+    const isOnlyChars = (str: string, regex: RegExp, options: AlphaOption = {}): boolean => {
         const {ignore} = options;
         let filteredStr = str;
         if (ignore instanceof RegExp) {
@@ -396,17 +396,17 @@ const validate = () => {
     }
 
     // Check if a string contains only alphabetic characters
-    const isOnlyAlpha = (str: string, options: IsAlphaOptions = {}): boolean => {
+    const isOnlyAlpha = (str: string, options: AlphaOption = {}): boolean => {
         return isOnlyChars(str, alphaRegex, options);
     }
 
     // Check if a string contains only numeric characters
-    const isOnlyNumeric = (str: string, options: IsAlphaOptions = {}): boolean => {
+    const isOnlyNumeric = (str: string, options: AlphaOption = {}): boolean => {
         return isOnlyChars(str, numericRegex, options);
     }
 
     // Check if a string contains only alphanumeric characters
-    const isOnlyAlphanumeric = (str: string, options: IsAlphaOptions = {}): boolean => {
+    const isOnlyAlphanumeric = (str: string, options: AlphaOption = {}): boolean => {
         return isOnlyAlpha(str, options) || isOnlyNumeric(str, options);
     };
 
@@ -423,102 +423,6 @@ const validate = () => {
 
     const isObjectEmpty = (obj: Record<string, any>): boolean => {
         return Object.keys(obj).length === 0;
-    };
-
-    // Validate postal code for Japan (JP)
-    const isJPPostalCode = (postalCode: string): boolean => {
-        const jpPostalCodeRegex = /^\d{3}-\d{4}$/;
-        return jpPostalCodeRegex.test(postalCode);
-    };
-
-    // Validate postal code for the United States (US)
-    const isUSPostalCode = (postalCode: string): boolean => {
-        const usPostalCodeRegex = /^\d{5}(?:-\d{4})?$/;
-        return usPostalCodeRegex.test(postalCode);
-    };
-
-    // Validate postal code for the Philippines (PH)
-    const isPHPostalCode = (postalCode: string): boolean => {
-        const phPostalCodeRegex = /^\d{4}$/;
-        return phPostalCodeRegex.test(postalCode);
-    };
-
-    // Validate postal code for Canada (CA)
-    const isCAPostalCode = (postalCode: string): boolean => {
-        const caPostalCodeRegex = /^[ABCEGHJKLMNPRSTVXY]\d[A-Z] \d[A-Z]\d$/i;
-        return caPostalCodeRegex.test(postalCode);
-    };
-
-    // Validate postal code for Australia (AU)
-    const isAUPostalCode = (postalCode: string): boolean => {
-        const auPostalCodeRegex = /^\d{4}$/;
-        return auPostalCodeRegex.test(postalCode);
-    };
-
-    // Validate postal code for Germany (DE)
-    const isDEPostalCode = (postalCode: string): boolean => {
-        const dePostalCodeRegex = /^\d{5}$/;
-        return dePostalCodeRegex.test(postalCode);
-    };
-
-    // Validate postal code for France (FR)
-    const isFRPostalCode = (postalCode: string): boolean => {
-        const frPostalCodeRegex = /^\d{5}$/;
-        return frPostalCodeRegex.test(postalCode);
-    };
-
-    // Validate postal code for United Kingdom (UK)
-    const isUKPostalCode = (postalCode: string): boolean => {
-        const ukPostalCodeRegex = /^([A-Z]{1,2}\d[A-Z\d]?|\d[A-Z]{2})\s?(\d[A-Z]{2})$/i;
-        return ukPostalCodeRegex.test(postalCode);
-    };
-
-    // Validate postal code for Italy (IT)
-    const isITPostalCode = (postalCode: string): boolean => {
-        const itPostalCodeRegex = /^\d{5}$/;
-        return itPostalCodeRegex.test(postalCode);
-    };
-
-    // Validate postal code for Spain (ES)
-    const isESPostalCode = (postalCode: string): boolean => {
-        const esPostalCodeRegex = /^(?:0[1-9]|[1-4]\d|5[0-2])\d{3}$/;
-        return esPostalCodeRegex.test(postalCode);
-    };
-
-    // Validate postal code for United Kingdom (GB)
-    const isGBPostalCode = (postalCode: string): boolean => {
-        const gbPostalCodeRegex = /^[A-Z]{1,2}\d[A-Z\d]? \d[A-Z]{2}$/i;
-        return gbPostalCodeRegex.test(postalCode);
-    };
-
-    // Validate postal code for India (IN)
-    const isINPostalCode = (postalCode: string): boolean => {
-        const inPostalCodeRegex = /^\d{6}$/;
-        return inPostalCodeRegex.test(postalCode);
-    };
-
-    // Validate postal code for Brazil (BR)
-    const isBRPostalCode = (postalCode: string): boolean => {
-        const brPostalCodeRegex = /^\d{5}-\d{3}$/;
-        return brPostalCodeRegex.test(postalCode);
-    };
-
-    // Validate postal code for Russia (RU)
-    const isRUPostalCode = (postalCode: string): boolean => {
-        const ruPostalCodeRegex = /^\d{6}$/;
-        return ruPostalCodeRegex.test(postalCode);
-    };
-
-    // Validate postal code for Mexico (MX)
-    const isMXPostalCode = (postalCode: string): boolean => {
-        const mxPostalCodeRegex = /^\d{5}$/;
-        return mxPostalCodeRegex.test(postalCode);
-    };
-
-    // Validate postal code for China (CN)
-    const isCNPostalCode = (postalCode: string): boolean => {
-        const cnPostalCodeRegex = /^[1-9]\d{5}$/;
-        return cnPostalCodeRegex.test(postalCode);
     };
 
     // Check if a string is a valid MIME type
@@ -588,7 +492,6 @@ const validate = () => {
         return num % divisor === 0;
     };
 
-
     return {
         isDecimal,
         isDivisible,
@@ -641,22 +544,6 @@ const validate = () => {
         isSafeNumberString,
         isEmptyOrWhitespace,
         isObjectEmpty,
-        isJPPostalCode,
-        isUSPostalCode,
-        isPHPostalCode,
-        isCAPostalCode,
-        isAUPostalCode,
-        isDEPostalCode,
-        isFRPostalCode,
-        isUKPostalCode,
-        isITPostalCode,
-        isESPostalCode,
-        isBRPostalCode,
-        isINPostalCode,
-        isGBPostalCode,
-        isRUPostalCode,
-        isMXPostalCode,
-        isCNPostalCode,
         isMimeType,
         isSlug,
         isStrongPassword,

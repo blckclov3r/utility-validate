@@ -1,7 +1,6 @@
 import utility from "./utility";
 import validate from "./validate";
 
-
 const utilityValidate = () => {
     const {
         removeWhitespace,
@@ -115,22 +114,6 @@ const utilityValidate = () => {
         isSafeNumberString,
         isEmptyOrWhitespace,
         isObjectEmpty,
-        isJPPostalCode,
-        isUSPostalCode,
-        isPHPostalCode,
-        isCAPostalCode,
-        isAUPostalCode,
-        isDEPostalCode,
-        isFRPostalCode,
-        isUKPostalCode,
-        isITPostalCode,
-        isESPostalCode,
-        isBRPostalCode,
-        isINPostalCode,
-        isGBPostalCode,
-        isRUPostalCode,
-        isMXPostalCode,
-        isCNPostalCode,
         isMimeType,
         isSlug,
         isStrongPassword,
@@ -142,8 +125,8 @@ const utilityValidate = () => {
         hasNumeric,
         hasWhitespace,
     } = validate();
-
     return {
+        //utility
         isDecimal,
         isDivisible,
         isValidMACAddress,
@@ -195,22 +178,6 @@ const utilityValidate = () => {
         isSafeNumberString,
         isEmptyOrWhitespace,
         isObjectEmpty,
-        isJPPostalCode,
-        isUSPostalCode,
-        isPHPostalCode,
-        isCAPostalCode,
-        isAUPostalCode,
-        isDEPostalCode,
-        isFRPostalCode,
-        isUKPostalCode,
-        isITPostalCode,
-        isESPostalCode,
-        isBRPostalCode,
-        isINPostalCode,
-        isGBPostalCode,
-        isRUPostalCode,
-        isMXPostalCode,
-        isCNPostalCode,
         isMimeType,
         isSlug,
         isStrongPassword,
@@ -221,8 +188,7 @@ const utilityValidate = () => {
         hasLowercase,
         hasNumeric,
         hasWhitespace,
-
-
+        //validate
         removeWhitespace,
         sanitizeAlphaNumericSpace,
         sanitizeAlphaNumericLower,
