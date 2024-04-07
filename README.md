@@ -41,8 +41,8 @@ import utilityValidate from 'utility-validate';
 You can now utilize the library's methods:
 
 ```typescript
-const utility = utilityValidate();
-const isValid = utility.isValidEmail('blckclov3r@gmail.com')
+const {isValidEmail, removeWhitespace, sanitizeAlphaNumericSpace} = utilityValidate();
+const isValid = isValidEmail('blckclov3r@gmail.com')
 console.log(isValid) // true
 ```
 
@@ -56,8 +56,8 @@ project, you can use the following script tag:
 
 ```
 <script type="module">
-    import utility from 'https://unpkg.com/utility-validate@1.0.4/dist/index.mjs';
-    const isValid = utility.isValidEmail('blckclov3r@gmail.com')
+    import {isValidEmail, removeWhitespace, sanitizeAlphaNumericSpace} from 'https://unpkg.com/utility-validate@1.0.4/dist/index.mjs';
+    const isValid = isValidEmail('blckclov3r@gmail.com')
     console.log(isValid) // true
 </script>
 ```
