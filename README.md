@@ -56,11 +56,13 @@ project, you can use the following script tag:
 
 ```
 <script type="module">
-    import usePostalPH from 'https://unpkg.com/utility-validate@1.0.4/dist/index.mjs';
+    import utility from 'https://unpkg.com/utility-validate@1.0.4/dist/index.mjs';
+    const isValid = utility.isValidEmail('blckclov3r@gmail.com')
+    console.log(isValid) // true
 </script>
 ```
 
-## Utility
+# Utility
 
 | Function Name               | Description                                                                                    |
 |-----------------------------|------------------------------------------------------------------------------------------------|
@@ -122,7 +124,7 @@ project, you can use the following script tag:
 | hashWithSHA384              | Hash data using SHA-384 algorithm                                                              |
 | hashPasswordSHA384          | Hash password with SHA-384 algorithm and salt                                                  |
 
-## Validate
+# Validate
 
 | Function Name        | Description                                                                                                                                                    |
 |----------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|
