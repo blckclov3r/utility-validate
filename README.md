@@ -22,17 +22,33 @@ Or via Yarn:
 yarn add utility-validate
 ```
 
+## Usage
+
+First, import the `utility-validate` function:
+
+```typescript
+import utilityValidate from 'utility-validate';
+```
+
+You can now utilize the library's methods to retrieve postal code, municipality, location, and region information.
+
+```typescript
+const utility = utilityValidate();
+const isValid = utility.isValidEmail('blckclov3r@gmail.com')
+console.log(isValid) // true
+```
+
 ## ESM Entry Point
 
 If you prefer not to install the package and want to include the ECMAScript module (ESM) entry point directly in your
 project, you can use the following script tag:
 
-- [https://cdn.jsdelivr.net/npm/utility-validate@1.0.2/dist/index.mjs](https://cdn.jsdelivr.net/npm/utility-validate@1.0.2/dist/index.mjs)
-- [https://unpkg.com/utility-validate@1.0.2/dist/index.mjs](https://unpkg.com/utility-validate@1.0.2/dist/index.mjs)
+- [https://cdn.jsdelivr.net/npm/utility-validate@1.0.3/dist/index.mjs](https://cdn.jsdelivr.net/npm/utility-validate@1.0.3/dist/index.mjs)
+- [https://unpkg.com/utility-validate@1.0.3/dist/index.mjs](https://unpkg.com/utility-validate@1.0.3/dist/index.mjs)
 
 ```
 <script type="module">
-    import usePostalPH from 'https://unpkg.com/utility-validate@1.0.2/dist/index.mjs';
+    import usePostalPH from 'https://unpkg.com/utility-validate@1.0.3/dist/index.mjs';
 </script>
 ```
 
