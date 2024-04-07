@@ -8,6 +8,14 @@ A collection of validators, sanitizers, and utilities.
 [![MIT License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/blckclov3r)
 [![jsDocs.io](https://img.shields.io/badge/jsDocs.io-reference-blue)](https://www.jsdocs.io/package/utility-validate)
 
+## Contents
+
+* [Installation](#installation)
+* [Usage](#usage)
+* [ESM](#esm-entry-point)
+* [Contribution](#contribution)
+* [License](#license)
+
 ## Installation
 
 Install via NPM:
@@ -30,7 +38,7 @@ First, import the `utility-validate` function:
 import utilityValidate from 'utility-validate';
 ```
 
-You can now utilize the library's methods to retrieve postal code, municipality, location, and region information.
+You can now utilize the library's methods
 
 ```typescript
 const utility = utilityValidate();
@@ -43,12 +51,12 @@ console.log(isValid) // true
 If you prefer not to install the package and want to include the ECMAScript module (ESM) entry point directly in your
 project, you can use the following script tag:
 
-- [https://cdn.jsdelivr.net/npm/utility-validate@1.0.3/dist/index.mjs](https://cdn.jsdelivr.net/npm/utility-validate@1.0.3/dist/index.mjs)
-- [https://unpkg.com/utility-validate@1.0.3/dist/index.mjs](https://unpkg.com/utility-validate@1.0.3/dist/index.mjs)
+- [https://cdn.jsdelivr.net/npm/utility-validate@1.0.4/dist/index.mjs](https://cdn.jsdelivr.net/npm/utility-validate@1.0.4/dist/index.mjs)
+- [https://unpkg.com/utility-validate@1.0.4/dist/index.mjs](https://unpkg.com/utility-validate@1.0.4/dist/index.mjs)
 
 ```
 <script type="module">
-    import usePostalPH from 'https://unpkg.com/utility-validate@1.0.3/dist/index.mjs';
+    import usePostalPH from 'https://unpkg.com/utility-validate@1.0.4/dist/index.mjs';
 </script>
 ```
 
@@ -179,6 +187,18 @@ project, you can use the following script tag:
 | hasLowercase         | Checks if a string contains lowercase letters.                                                                                                                 |
 | hasNumeric           | Checks if a string contains numeric characters.                                                                                                                |
 | hasWhitespace        | Checks if a string contains whitespace characters.                                                                                                             |
+
+## Contribution
+
+Contributions are welcome! If you'd like to contribute to `utility-validate`, please follow these guidelines:
+
+- Fork the repository on GitHub.
+- Clone your forked repository (`git clone https://github.com/blckclov3r/utility-validate`).
+- Create a new branch for your changes (`git checkout -b your-branch-name`).
+- Make your changes.
+- Commit your changes (`git commit -am 'Description of your changes'`).
+- Push your changes to your branch (`git push origin your-branch-name`).
+- Create a Pull Request on GitHub.
 
 ## License
 
