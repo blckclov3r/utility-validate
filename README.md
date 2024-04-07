@@ -38,7 +38,7 @@ First, import the `utility-validate` function:
 import utilityValidate from 'utility-validate';
 ```
 
-You can now utilize the library's methods
+You can now utilize the library's methods:
 
 ```typescript
 const utility = utilityValidate();
