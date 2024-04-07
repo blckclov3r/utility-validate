@@ -56,7 +56,9 @@ project, you can use the following script tag:
 
 ```
 <script type="module">
-    import usePostalPH from 'https://unpkg.com/utility-validate@1.0.4/dist/index.mjs';
+    import utility from 'https://unpkg.com/utility-validate@1.0.4/dist/index.mjs';
+    const isValid = utility.isValidEmail('blckclov3r@gmail.com')
+    console.log(isValid) // true
 </script>
 ```
 
