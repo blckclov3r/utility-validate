@@ -1,19 +1,25 @@
 import {defineConfig} from 'tsup';
 
 export default defineConfig({
-    format: ['cjs', 'esm'],
+    format: ['cjs', 'esm', 'iife'],
     entry: ['./src/index.ts'],
-    dts: true,
     clean: true,
-    minify: "terser",
+    minify: 'terser',
     keepNames: true,
-    treeshake: true,
-    splitting: false,
+    treeshake: false,
     target: 'es5',
     outDir: './dist',
+    name: 'utility-library',
+    dts: true,
+    splitting: false,
     terserOptions: {
         mangle: true,
         compress: true,
         ecma: 5,
+        keep_fnames: true,
+        module: true,
+        safari10: true,
+        ie8: true,
+        toplevel: true,
     },
 });
