@@ -1,12 +1,12 @@
 import {defineConfig} from 'tsup';
 
 export default defineConfig({
-    format: ['cjs', 'esm', 'iife'],
+    format: ['cjs', 'esm'],
     entry: ['./src/index.ts'],
     clean: true,
     minify: 'terser',
     keepNames: true,
-    treeshake: false,
+    treeshake: true,
     target: 'es5',
     outDir: './dist',
     name: 'utility-library',
