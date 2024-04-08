@@ -12,7 +12,6 @@ A collection of validators, sanitizers, and utilities.
 
 * [Installation](#installation)
 * [Usage](#usage)
-* [ESM](#esm-entry-point)
 * [Contribution](#contribution)
 * [License](#license)
 
@@ -46,20 +45,16 @@ const email = isEmail('blckclov3r@gmail.com')
 console.log(email) // true
 ```
 
-## Entry Point
-
 If you prefer not to install the package and want to include the entry point directly in your project, you can use the
 following script tags:
 
-- [https://cdn.jsdelivr.net/npm/utility-validate@1.0.5/dist/index.mjs](https://cdn.jsdelivr.net/npm/utility-validate@1.0.5/dist/index.mjs)
-- [https://unpkg.com/utility-validate@1.0.5/dist/index.mjs](https://unpkg.com/utility-validate@1.0.5/dist/index.mjs)
-
-Example usage:
+- [https://cdn.jsdelivr.net/npm/utility-validate@1.0.6/dist/index.mjs](https://cdn.jsdelivr.net/npm/utility-validate@1.0.6/dist/index.mjs)
+- [https://unpkg.com/utility-validate@1.0.6/dist/index.mjs](https://unpkg.com/utility-validate@1.0.6/dist/index.mjs)
 
 ```html
 
 <script type="module">
-    import {isEmail} from 'https://unpkg.com/utility-validate@1.0.5/dist/index.mjs';
+    import {isEmail} from 'https://unpkg.com/utility-validate@1.0.6/dist/index.mjs';
 
     const email = isEmail('blckclov3r@gmail.com')
     console.log(email) // true
@@ -70,7 +65,7 @@ If you're using an IIFE, you can include the following script tag:
 
 ```html
 
-<script src="https://cdn.jsdelivr.net/npm/utility-validate@1.0.5/dist/index.global.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/utility-validate@1.0.6/dist/index.global.js"></script>
 ```
 
 ## Utility
