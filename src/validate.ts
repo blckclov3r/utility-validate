@@ -1,8 +1,4 @@
-type AlphaOption = {
-    ignore?: RegExp | string;
-}
-
-type LocaleRegex = { [key: string]: RegExp };
+import {AlphaOption, LocaleRegex} from "./types";
 
 const alphaLocales: LocaleRegex = {
     'en-US': /^[A-Za-z]+$/,
@@ -61,7 +57,7 @@ const alphaNumericLocales: LocaleRegex = {
 const validate = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     // Validates if the input value is a valid MAC address in the format "00:1A:2B:3C:4D:5E" or "00-1A-2B-3C-4D-5E"
-    const isValidMACAddress = (value: string): boolean => {
+    const isMACAddress = (value: string): boolean => {
         const macAddressRegex = /^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$/;
         return macAddressRegex.test(value);
     };
@@ -101,6 +97,11 @@ const validate = () => {
         return value === null;
     };
 
+
+    // Checks if a value is typeof string
+    const isString = <T, >(value: T): boolean => {
+        return (typeof value === 'string');
+    };
 
     // Checks if the input value is a float (non-integer number)
     const isFloat = (value: any): boolean => {
@@ -145,26 +146,6 @@ const validate = () => {
     // Checks if a value is a BigInt object
     const isBigInt = <T>(value: T): boolean => {
         return typeof BigInt !== 'undefined' && value instanceof BigInt;
-    };
-
-    // Check if a string is a valid credit card number using Luhn algorithm
-    const isValidCreditCard = (value: string): boolean => {
-        const sanitizedValue = value.replace(/\D/g, '');
-        let sum = 0;
-        let doubleUp = false;
-        // Loop through each digit from right to left
-        for (let i = sanitizedValue.length - 1; i >= 0; i--) {
-            let digit = parseInt(sanitizedValue.charAt(i));
-            if (doubleUp) {
-                digit *= 2;
-                if (digit > 9) {
-                    digit -= 9;
-                }
-            }
-            sum += digit;
-            doubleUp = !doubleUp;
-        }
-        return sum % 10 === 0;
     };
 
     // Validate if a value is a Date object
@@ -320,42 +301,33 @@ const validate = () => {
     };
 
     // Check if a string is a valid IP address (IPv4)
-    const isValidIPAddress = (value: string): boolean => {
+    const isIPAddress = (value: string): boolean => {
         const ipRegex = /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
         return ipRegex.test(value);
     };
 
-    // Validate if a string is a valid URL
-    const isValidURL = (url: string): boolean => {
-        try {
-            new URL(url);
-            return true;
-        } catch {
-            return false;
-        }
-    };
 
     // Validate if a string is a valid Social Security Number (SSN)
-    const isValidSSN = (value: string): boolean => {
+    const isSSN = (value: string): boolean => {
         // Basic validation for Social Security Number (SSN) in XXX-XX-XXXX or XXXXXXXXX format
         const ssnRegex = /^\d{3}-?\d{2}-?\d{4}$/;
         return ssnRegex.test(value);
     };
 
     // Validate if a string is a valid Vehicle Identification Number (VIN)
-    const isValidVIN = (value: string): boolean => {
+    const isVIN = (value: string): boolean => {
         // Basic validation for Vehicle Identification Number (VIN) - 17 characters
         return /^[A-HJ-NPR-Z0-9]{17}$/i.test(value);
     };
 
     // Validate if a number is a valid latitude value
-    const isValidLatitude = (value: number): boolean => {
+    const isLatitude = (value: number): boolean => {
         // Basic latitude validation (-90 to 90)
         return value >= -90 && value <= 90;
     };
 
     // Validate if a number is a valid longitude value
-    const isValidLongitude = (value: number): boolean => {
+    const isLongitude = (value: number): boolean => {
         // Basic longitude validation (-180 to 180)
         return value >= -180 && value <= 180;
     };
@@ -368,13 +340,8 @@ const validate = () => {
     };
 
     // Validate an email address
-    const isValidEmail = (email: string): boolean => {
+    const isEmail = (email: string): boolean => {
         return emailRegex.test(email);
-    };
-
-    // Check if a string is empty or contains only whitespace
-    const isEmptyStr = (str: string): boolean => {
-        return str?.trim() === '';
     };
 
     // Regular expressions for validation
@@ -492,10 +459,108 @@ const validate = () => {
         return num % divisor === 0;
     };
 
+    // Checks if a JSON object is empty
+    const isEmptyJson = <T extends Record<string, unknown>>(obj: T): boolean => {
+        return Object.keys(obj).length === 0;
+    };
+
+    // Check if a string is a valid IPv4 address
+    const isIPv4 = (str: string): boolean => {
+        // IPv4 regex pattern
+        const ipv4Pattern = /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
+        return ipv4Pattern.test(str);
+    };
+
+    // Check if a string is a valid IPv6 address
+    const isIPv6 = (str: string): boolean => {
+        // IPv6 regex pattern
+        const ipv6Pattern = /^([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}$/;
+        return ipv6Pattern.test(str);
+    };
+
+
+    // Check if a string contains a valid credit card number
+    const isCreditCard = (str: string): boolean => {
+        // Remove any spaces or hyphens
+        const cleanedStr = str.replace(/\s|-/g, '');
+
+        // Check if the string consists of 13 to 19 digits
+        if (!/^\d{13,19}$/.test(cleanedStr)) return false;
+
+        // Apply the Luhn algorithm to validate the credit card number
+        let sum = 0;
+        let isEvenDigit = false;
+        for (let i = cleanedStr.length - 1; i >= 0; i--) {
+            let digit = parseInt(cleanedStr.charAt(i), 10);
+            if (isEvenDigit) {
+                digit *= 2;
+                if (digit > 9) {
+                    digit -= 9;
+                }
+            }
+            sum += digit;
+            isEvenDigit = !isEvenDigit;
+        }
+        return sum % 10 === 0;
+    };
+
+    // Utility to check if a year is a leap year
+    const isLeapYear = (year: number): boolean => {
+        return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
+    };
+
+    // Utility to check if a number is prime
+    const isPrime = (num: number): boolean => {
+        if (num <= 1) return false;
+        if (num <= 3) return true;
+        if (num % 2 === 0 || num % 3 === 0) return false;
+        let i = 5;
+        while (i * i <= num) {
+            if (num % i === 0 || num % (i + 2) === 0) return false;
+            i += 6;
+        }
+        return true;
+    };
+
+    // Utility to check if a given number is even
+    const isEven = (num: number): boolean => {
+        return num % 2 === 0;
+    };
+
+    // Checks if a number is odd
+    const isOdd = (num: number): boolean => {
+        return num % 2 !== 0;
+    };
+
+    // Utility to check if a number is within a specified range
+    const isInRange = (num: number, min: number, max: number): boolean => {
+        return num >= min && num <= max;
+    };
+
+    // Checks if a number is positive
+    const isPositive = (num: number): boolean => num > 0;
+
+    // Checks if a number is negative
+    const isNegative = (num: number): boolean => num < 0;
+
+    // Checks if a number is zero
+    const isZero = (num: number): boolean => num === 0;
+
     return {
+        isPositive,
+        isNegative,
+        isZero,
+        isEmptyJson,
+        isIPv4,
+        isIPv6,
+        isLeapYear,
+        isPrime,
+        isEven,
+        isInRange,
+        isOdd,
         isDecimal,
         isDivisible,
-        isValidMACAddress,
+        isMACAddress,
         isInteger,
         isFloat,
         isObject,
@@ -513,7 +578,7 @@ const validate = () => {
         isBlob,
         isFile,
         isBigInt,
-        isValidCreditCard,
+        isCreditCard,
         isURL,
         isDate,
         isEmpty,
@@ -528,16 +593,14 @@ const validate = () => {
         isISBN,
         isJSON,
         isJWT,
-        isValidEmail,
-        isEmptyStr,
+        isEmail,
         isPalindrome,
-        isValidURL,
-        isValidSSN,
-        isValidVIN,
-        isValidLatitude,
-        isValidLongitude,
+        isSSN,
+        isVIN,
+        isLatitude,
+        isLongitude,
         isWhitespace,
-        isValidIPAddress,
+        isIPAddress,
         isOnlyAlpha,
         isOnlyNumeric,
         isOnlyAlphanumeric,
@@ -554,6 +617,7 @@ const validate = () => {
         hasLowercase,
         hasNumeric,
         hasWhitespace,
+        isString,
     }
 }
 export default validate;
